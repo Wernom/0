@@ -3,7 +3,7 @@
 void array_create(struct array *self) {
     self->capacity = 10;
     self->size = 0;
-    self->data = malloc(self->capacity*sizeof(int));
+    self->data = calloc(self->capacity,sizeof(int));
     if(self->data == NULL){
         printf("ERREUR probleme de memoire.");
         exit(1);
@@ -36,7 +36,7 @@ void array_add(struct array *self, int value) {
         self->data = data;
     }
     self->data[self->size] = value;
-    ++self->size;
+    self->size += 1;
 }
 
 void array_insert(struct array *self, int value, size_t index) {
