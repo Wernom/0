@@ -61,9 +61,11 @@ void array_remove(struct array *self, size_t index) {
 }
 
 int *array_get(const struct array *self, size_t index) {
-  return &self->data[index];
+    if(index > self->size - 1){
+        return NULL;
+    }
+    return &self->data[index];
 }
-
 bool array_is_empty(const struct array *self) {
     if(self->size == 0){
         return true;
