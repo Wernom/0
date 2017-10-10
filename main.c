@@ -1,5 +1,15 @@
-#include "array.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <stddef.h>
+#include <stdbool.h>
+#include <string.h>
+#include <time.h>
 
+struct array {
+  int *data;
+  size_t capacity;
+  size_t size;
+};
 
 void array_create(struct array *self) {
     self->capacity = 10;
@@ -66,6 +76,7 @@ int *array_get(const struct array *self, size_t index) {
     }
     return &self->data[index];
 }
+
 bool array_is_empty(const struct array *self) {
     if(self->size == 0){
         return true;
@@ -91,6 +102,7 @@ size_t array_search_sorted(const struct array *self, int value) {
         return self->size;
     }
 
+
     size_t min = 0, max = self->size;
     size_t mid = 0;
     while(max != min){
@@ -106,7 +118,6 @@ size_t array_search_sorted(const struct array *self, int value) {
     }
     return self->size;
 }
-
 
 void array_import(struct array *self, const int *other, size_t size) {
     self->size = size;
@@ -171,28 +182,67 @@ void array_insertion_sort(struct array *self) {
     }
 }
 
+int main(){
+    struct array *tab = malloc(sizeof(struct array));
+    array_create(tab);
 
-void array_quick_sort(struct array *self) {
+  for (int i = 0; i < 1000; ++i) {
+    array_add(tab, 2*i);
+  }
 
-}
+  size_t index;
 
-void array_heap_sort(struct array *self) {
+  for (int i = 0; i < 1000; ++i) {
+    index = array_search_sorted(tab, 2*i);
+    printf("index : %lu \t i : %d\n", index, 2*i);
+    //EXPECT_EQ(index, static_cast<size_t>(i));
+  }
+    index = array_search_sorted(tab, 2001);
+    printf("index : %lu \t i : %d\n",index, 2001);
+    index = array_search_sorted(tab, -1);
+    printf("index : %lu \t i : %d\n",index, -1);
 
-}
+    /*printf("%d\n",array_size(tab));
+    printf("tab->data : %d\n", tab->data);
+    for(size_t i = 0; i < tab->capacity; ++i){
+        printf("tab->data[%lu] = %d\n", i, tab->data[i]);
+    }
+
+    size_t taille = 10;
+    int *ar = calloc(taille, sizeof(int));
+    ar[3]=0;
+    bool b = array_equals(tab, ar, taille);
+    printf("%d\n", b);
+
+    for(size_t i = 0; i < 10; ++i){
+        array_add(tab, rand());
+    }
+    printf("\n");
+
+    //array_remove(tab, 5);
+    for(size_t i = 0; i < tab->size; ++i){
+        printf("tab->data[%lu] = %d\n", i, tab->data[i]);
+    }
+
+    printf("\n\n\n************\n");
+
+    array_dump(tab);
+
+    for(size_t i = 0; i < 10; ++i){
+        array_add(tab, rand());
+    }
+
+    array_dump(tab);
+    printf("is sorted : %s\n",array_is_sorted(tab) ? "true" : "false");
+
+    printf("\n");
+    //array_selection_sort(tab);
+    array_selection_sort(tab);
+    array_dump(tab);
+    printf("is sorted : %s\n",array_is_sorted(tab) ? "true" : "false");
 
 
-bool array_is_heap(const struct array *self) {
-  return false;
-}
-
-void array_heap_add(struct array *self, int value) {
-
-}
-
-int array_heap_top(const struct array *self) {
-  return 0;
-}
-
-void array_heap_remove_top(struct array *self) {
-
+*/
+    array_destroy(tab);
+    return 0;
 }
