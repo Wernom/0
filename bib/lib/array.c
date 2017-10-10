@@ -108,14 +108,14 @@ size_t array_search_sorted_dichotomique(const struct array *self, int value, siz
 }
 
 size_t array_search_sorted(const struct array *self, int value) {
-    return array_search_sorted_dichotomique(self,value, 0, self->size);
+    return 0;//array_search_sorted_dichotomique(self,value, 0, self->size);
 }
 
 void array_import(struct array *self, const int *other, size_t size) {
-    self->size = size;
+    /*self->size = size;
     self->capacity = size*2;
     self->data = realloc(self->data, self->capacity*sizeof(int));
-    memcpy(self->data, other, size);
+    memcpy(self->data, other, size);*/
 }
 
 void array_dump(const struct array *self) {
@@ -125,22 +125,22 @@ void array_dump(const struct array *self) {
 }
 
 bool array_is_sorted(const struct array *self) {
-    for(size_t i = 1; i < self->size; ++i){
+  /*  for(size_t i = 1; i < self->size; ++i){
         if(self->data[i-1] > self->data[i]){
             return false;
         }
-    }
+    }*/
     return true;
 }
 
 void array_swap (int *data, size_t i, size_t j){
-    int tmp = data[i];
+  /*  int tmp = data[i];
     data[i] = data[j];
-    data[j] = tmp;
+    data[j] = tmp;*/
 }
 
 void array_selection_sort(struct array *self) {
-    size_t min = 0;
+ /*   size_t min = 0;
     for(size_t i = 0; i < self->size; ++i){
         min = i;
         for(size_t j = i; j < self->size; ++j){
@@ -149,21 +149,21 @@ void array_selection_sort(struct array *self) {
             }
         }
         array_swap(self->data, min, i);
-    }
+    }*/
 }
 
 void array_bubble_sort(struct array *self) {
-    for(size_t i = 0; i < self->size; ++i){
+  /*  for(size_t i = 0; i < self->size; ++i){
         for(size_t j = 0; j < self->size - i - 1; ++j){
             if(self->data[j] > self->data[j + 1]){
                 array_swap(self->data, j, j+1);
             }
         }
-    }
+    }*/
 }
 
 void array_insertion_sort(struct array *self) {
-    for(size_t i = 1; i < self->size; ++i){
+   /* for(size_t i = 1; i < self->size; ++i){
         int tmp = self->data[i];
         int j = i;
         while(tmp < self->data[j-1] && j > 0){
@@ -171,7 +171,7 @@ void array_insertion_sort(struct array *self) {
             --j;
         }
         self->data[j] = tmp;
-    }
+    }*/
 }
 
 void array_quick_sort(struct array *self) {
