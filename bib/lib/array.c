@@ -83,7 +83,7 @@ size_t array_search(const struct array *self, int value) {
             return i;
         }
     }
-    return -1;
+    return self->size;
 }
 
 size_t array_search_sorted_dichotomique(const struct array *self, int value, size_t min,  size_t max){
