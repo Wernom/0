@@ -77,12 +77,16 @@ size_t array_size(const struct array *self) {
 }
 
 size_t array_search(const struct array *self, int value) {
-    for(size_t i = 0; i < self->size; ++i){
-        if(self->data[i] == value){
-            return i;
-        }
-    }
-    return self->size;
+	size_t index=self->size;
+	for (size_t i=0; i<self->size; i++)
+	{
+		if (self->data[i]==value)
+		{
+			index=i;
+			break;
+		}
+	}
+	return index;
 }
 
 size_t array_search_sorted_dichotomique(const struct array *self, int value, size_t min,  size_t max){
