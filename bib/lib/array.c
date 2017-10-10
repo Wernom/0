@@ -61,7 +61,7 @@ void array_remove(struct array *self, size_t index) {
 }
 
 int *array_get(const struct array *self, size_t index) {
-    if(index > self->size - 1){
+    if(index >= self->size){
         return NULL;
     }
     return &self->data[index];
