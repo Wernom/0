@@ -86,29 +86,28 @@ size_t array_search(const struct array *self, int value) {
     return self->size;
 }
 
-size_t array_search_sorted_dichotomique(const struct array *self, int value, size_t min,  size_t max){
-    if(min == max){
-        return min;
+size_t array_search_sorted(const struct array *self, int value) {
+    if(value > self->data[self->size-1] || value < self->data[0]){
+        return self->size;
     }
-    size_t mid = (max + min)/2;
-    if(value > self->data[mid]){
-        return array_search_sorted_dichotomique(self, value, mid + 1, max);
+
+
+    size_t min = 0, max = self->size;
+    size_t mid = 0;
+    while(max != min){
+        mid = (min + max)/2;
+        if(self->data[mid] == value){
+            return mid;
+        }
+        if(self->data[mid] > value){
+            max = mid;
+        }else{
+            min = mid;
+        }
     }
-    if(value < self->data[mid]){
-        return array_search_sorted_dichotomique(self, value, min, mid - 1);
-    }
-    return mid;
+    return self->size;
 }
 
-size_t array_search_sorted(const struct array *self, int value) {
-    if(value > self->data[self->size-1]){
-        return self->size;
-    }
-    if(value < self->data[0]){
-        return self->size;
-    }
-    return array_search_sorted_dichotomique(self,value, 0, self->size);
-}
 
 void array_import(struct array *self, const int *other, size_t size) {
     self->size = size;

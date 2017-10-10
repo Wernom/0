@@ -72,7 +72,7 @@ size_t array_search(const struct array *self, int value);
  * Search for an element in the sorted array.
  */
 size_t array_search_sorted(const struct array *self, int value);
-size_t array_search_sorted_dichotomique(const struct array *self, int value, size_t min,  size_t max);
+
 /*
  * Import an array
  */

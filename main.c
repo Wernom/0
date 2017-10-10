@@ -197,8 +197,8 @@ int main(){
   size_t index;
 
   for (int i = 0; i < 1001; ++i) {
-    index = array_search_sorted(tab, 2*i);
-    printf("index : %lu \t i : %d\n",index, 2*i);
+    index = array_search_sorted(tab, i);
+    printf("index : %lu \t i : %d\n",index, i);
     //EXPECT_EQ(index, static_cast<size_t>(i));
   }
     index = array_search_sorted(tab, 2001);
