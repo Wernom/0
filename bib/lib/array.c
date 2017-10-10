@@ -65,7 +65,7 @@ int *array_get(const struct array *self, size_t index) {
 }
 
 bool array_is_empty(const struct array *self) {
-    if(self->size){
+    if(self->size == 0){
         return true;
     }
     return false;
