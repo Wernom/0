@@ -107,7 +107,7 @@ size_t array_search_sorted(const struct array *self, int value) {
 			index=i;
 			break;
 		}
-		
+
 		if (self->data[i]>value)
 		{
 			break;
@@ -191,7 +191,7 @@ void array_insertion_sort(struct array *self) {
 	}
 }
 
-
+/*
 void array_quick_sort(struct array *self) {
 	array_quick_sort_partial(self->data, 0, self->size - 1);
 }
@@ -252,11 +252,11 @@ bool isHeap(int *arr, int i, int n)
 {
 	if (i > (n - 2)/2)
 		return true;
- 
+
 	if (arr[i] >= arr[2*i + 1]  &&  arr[i] >= arr[2*i + 2] &&
 		isHeap(arr, 2*i + 1, n) && isHeap(arr, 2*i + 2, n))
 		return true;
- 
+
 	return false;
 }
 
@@ -299,4 +299,4 @@ void array_heap_remove_top(struct array *self) {
 		heap_remove_max(self->data,self->size);
 		self->size--;
 	}
-}
+}*/
