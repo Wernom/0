@@ -191,112 +191,27 @@ void array_insertion_sort(struct array *self) {
 	}
 }
 
-/*
 void array_quick_sort(struct array *self) {
-	array_quick_sort_partial(self->data, 0, self->size - 1);
-}
 
-void array_quick_sort_partial(int *data, ssize_t i, ssize_t j) {
-	if (i < j) {
-		ssize_t p = array_partition(data, i, j);
-		array_quick_sort_partial(data, i, p - 1);
-		array_quick_sort_partial(data, p + 1, j);
-	}
-}
-
-ssize_t array_partition(int *data, ssize_t i, ssize_t j) {
-	ssize_t pivot_index = i;
-	const int pivot = data[pivot_index];
-	array_swap(data, pivot_index, j);
-	ssize_t l = i;
-	for (ssize_t k = i; k < j; ++k) {
-		if (data[k] < pivot) {
-			array_swap(data, k, l);
-l			++;
-		}
-	}
-	array_swap(data, l, j);
-	return l;
 }
 
 void array_heap_sort(struct array *self) {
-	for (size_t i = 0; i < self->size; ++i) {
-		int value = self->data[i];
-		heap_insert(self->data, i, value);
-	}
-	for (size_t i = 0; i < self->size; ++i) {
-		int value = self->data[0];
-		heap_remove_max(self->data, self->size - i);
-		self->data[self->size - i - 1] = value;
-	}
+
 }
 
-void heap_insert(int *heap, size_t n, int value) {
-	size_t i = n;
-	heap[i] = value;
-	while (i > 0) {
-		ssize_t j = (i - 1) / 2;
-		if (heap[i] < heap[j]) {
-			break;
-		}
-		array_swap(heap, i, j);
-		i = j;
-	}
-}
 
 bool array_is_heap(const struct array *self) {
-	return isHeap(self->data, 0, self->size);
-}
-
-bool isHeap(int *arr, int i, int n)
-{
-	if (i > (n - 2)/2)
-		return true;
-
-	if (arr[i] >= arr[2*i + 1]  &&  arr[i] >= arr[2*i + 2] &&
-		isHeap(arr, 2*i + 1, n) && isHeap(arr, 2*i + 2, n))
-		return true;
-
-	return false;
+  return false;
 }
 
 void array_heap_add(struct array *self, int value) {
-	if (self->size == self->capacity) {
-		self->capacity *=2;
-		int *data = calloc(self->capacity, sizeof(int));
-		memcpy(data, self->data, self->size * sizeof(int));
-		free(self->data);
-		self->data = data;
-	}
-	heap_insert(self->data, self->size,value);
-	self->size++;
+
 }
 
 int array_heap_top(const struct array *self) {
-	return self->data[0];
-}
-
-void heap_remove_max(int *heap, size_t n) {
-	heap[0] = heap[n - 1];
-	size_t i = 0;
-	while (i < (n - 1) / 2)
-	{
-		size_t lt = 2 * i + 1;
-		size_t rt = 2 * i + 2;
-		if (heap[i] > heap[lt] && heap[i] > heap[rt])
-		{
-			break;
-		}
-		size_t j = (heap[lt] > heap[rt]) ? lt : rt;
-		array_swap(heap, i, j);
-		i = j;
-	}
+  return 0;
 }
 
 void array_heap_remove_top(struct array *self) {
-	if (array_size(self)>0)
-	{
-		heap_remove_max(self->data,self->size);
-		self->size--;
-	}
-}*/
+
+}
