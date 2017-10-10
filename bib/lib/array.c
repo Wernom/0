@@ -88,7 +88,6 @@ size_t array_search(const struct array *self, int value) {
 
 size_t array_search_sorted_dichotomique(const struct array *self, int value, size_t min,  size_t max){
     if(min == max){
-            //printf("0");
         return min;
     }
     size_t mid = (max + min)/2;
@@ -98,17 +97,16 @@ size_t array_search_sorted_dichotomique(const struct array *self, int value, siz
     if(value < self->data[mid]){
         return array_search_sorted_dichotomique(self, value, min, mid - 1);
     }
-    //printf("1");
     return mid;
 }
 
 size_t array_search_sorted(const struct array *self, int value) {
-    /*if(value > self->data[self->size-1]){
+    if(value > self->data[self->size-1]){
         return self->size;
     }
     if(value < self->data[0]){
         return self->size;
-    }*/
+    }
     return array_search_sorted_dichotomique(self,value, 0, self->size);
 }
 
