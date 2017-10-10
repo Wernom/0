@@ -103,12 +103,12 @@ size_t array_search_sorted_dichotomique(const struct array *self, int value, siz
 }
 
 size_t array_search_sorted(const struct array *self, int value) {
-    if(value > self->data[self->size-1]){
+    /*if(value > self->data[self->size-1]){
         return self->size;
     }
     if(value < self->data[0]){
         return self->size;
-    }
+    }*/
     return array_search_sorted_dichotomique(self,value, 0, self->size);
 }
 
